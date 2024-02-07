@@ -38,7 +38,7 @@ const sum = numbers => numbers.reduce((acc, curr) => acc + curr, 0);
 const selectTaxable = items => items.filter(item => item.taxable);
 
 // applyTax: (prices: [number], tax: number) -> [number]
-const applyTax = (prices, tax) => prices.map(price => price * Math.abs(tax));
+const applyTax = (prices, tax) => prices.map(price => price * tax);
 
 // baseSum: (items: [{price: number}]) -> number
 const baseSum = items => sum(prices(items));
