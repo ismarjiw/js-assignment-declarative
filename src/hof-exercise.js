@@ -38,15 +38,15 @@ const sum = numbers => numbers.reduce((acc, curr) => acc + curr, 0);
 const selectTaxable = items => items.filter(item => item.taxable);
 
 // applyTax: (prices: [number], tax: number) -> [number]
-const applyTax = (prices, tax) => prices.map(price => price * (Math.abs(tax) / 100));
+const applyTax = (prices, tax) => prices.map(price => price * Math.abs(tax));
 
 // baseSum: (items: [{price: number}]) -> number
 const baseSum = items => sum(prices(items));
 
-// taxSum: (items: [{taxable: boolean}], tax: number) -> number
+// taxSum: (items: [{price: number, taxable: boolean}], tax: number) -> number
 const taxSum = (items, tax) => sum(applyTax(prices(selectTaxable(items)), tax));
 
-// calculateTotalDeclarative: (items: [{price: number}], tax: number) -> number
+// calculateTotalDeclarative: (items: [{price: number, taxable: boolean}], tax: number) -> number
 const calculateTotalDeclarative = (items, tax) =>
   baseSum(items) + taxSum(items, Math.abs(tax));
 
